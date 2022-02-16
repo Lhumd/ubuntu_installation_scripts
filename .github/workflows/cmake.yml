@@ -16,9 +16,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: "setup ubuntu"
+    - name: "install git"
       shell: bash 
       run: |
         sudo apt-get update
         sudo apt-get install git
+        
+    - name: "run ubuntu installation scripts"
+      shell: bash 
+      run: |
         git clone https://github.com/Lhumd/ubuntu_installation_scripts.git
+        cd ubuntu_installation_scripts/official
+        sudo ./setup_ubuntu install all
